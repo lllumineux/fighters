@@ -86,7 +86,7 @@ class Fighter1(pygame.sprite.Sprite):
         self.direction = 'right'
         self.on_ground = False
         self.attacked, self.attack_time = False, 0
-        self.hp = 20
+        self.hp = 3
 
     def update(self):
         if not jumping1:
@@ -141,6 +141,8 @@ class Ball1(pygame.sprite.Sprite):
 
         if pygame.sprite.spritecollide(ball1, fighter2_sprite, False):
             fighter2.hp -= 1
+            ball1.rect.x, ball1.rect.y = 9999, 9999
+            ball1.direction = 'none'
         if fighter2.hp == 0:
             print('First player won!')
 
@@ -173,6 +175,8 @@ class Ball2(pygame.sprite.Sprite):
 
         if pygame.sprite.spritecollide(ball2, fighter1_sprite, False):
             fighter1.hp -= 1
+            ball2.rect.x, ball2.rect.y = 9999, 9999
+            ball2.direction = 'none'
         if fighter1.hp == 0:
             print('Second player won!')
 
@@ -217,7 +221,7 @@ class Fighter2(pygame.sprite.Sprite):
         self.direction = 'left'
         self.on_ground = False
         self.attacked, self.attack_time = False, 0
-        self.hp = 20
+        self.hp = 3
 
     def update(self):
         if not jumping2:
