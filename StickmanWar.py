@@ -1,42 +1,11 @@
 import pygame
 import os
+from BuildingLevels import load_sprite, Background, StativeTexture, stative_textures_sprites, background_sprites, \
+    fighter1_sprite, fighter2_sprite
+from NewLevel import building
 
-size = screen_width, screen_height = 960, 540
+size = screen_width, screen_height = 1920, 1080
 screen = pygame.display.set_mode(size)
-
-
-def load_texture(name):
-    fullname = os.path.join('sprites', name)
-    try:
-        image = pygame.image.load(fullname)
-    except pygame.error:
-        print('Cannot load image: ', name)
-        raise SystemExit
-    image = image.convert_alpha()
-    return image
-
-
-def screen_update():
-    screen.fill(pygame.Color('#ffffff'))
-
-    stative_textures_sprites.draw(screen)
-    stative_textures_sprites.update()
-
-    moving_textures_sprites.draw(screen)
-    moving_textures_sprites.update()
-
-    fighter1_sprite.update()
-    fighter2_sprite.update()
-    fighter1_sprite.draw(screen)
-    fighter2_sprite.draw(screen)
-
-    ball1_sprite.update()
-    ball1_sprite.draw(screen)
-    ball2_sprite.update()
-    ball2_sprite.draw(screen)
-
-    pygame.display.flip()
-    clock.tick(fps)
 
 
 def load_image(folder, name, colorkey=None):
@@ -52,6 +21,26 @@ def load_image(folder, name, colorkey=None):
             colorkey = image.get_at((0, 0))
         image.set_colorkey(colorkey)
     return image
+
+
+def screen_update():
+    screen.fill(pygame.Color('#ffffff'))
+
+    stative_textures_sprites.draw(screen)
+    stative_textures_sprites.update()
+
+    fighter1_sprite.update()
+    fighter2_sprite.update()
+    fighter1_sprite.draw(screen)
+    fighter2_sprite.draw(screen)
+
+    ball1_sprite.update()
+    ball1_sprite.draw(screen)
+    ball2_sprite.update()
+    ball2_sprite.draw(screen)
+
+    pygame.display.flip()
+    clock.tick(fps)
 
 
 class Fighter1(pygame.sprite.Sprite):
@@ -97,15 +86,13 @@ class Fighter1(pygame.sprite.Sprite):
                     fighter1.image = fighter1.images['jumping'][1]
                 self.falling += 0.25
                 self.rect.y += 6 + self.falling // 1
-                if pygame.sprite.spritecollide(self, stative_textures_sprites, False) \
-                        or pygame.sprite.spritecollide(self, moving_textures_sprites, False):
+                if pygame.sprite.spritecollide(self, stative_textures_sprites, False):
                     self.rect.y -= 6 + self.falling // 1
                     self.falling = 0
                     self.on_ground = True
             else:
                 self.rect.y += 6
-                if pygame.sprite.spritecollide(self, stative_textures_sprites, False) \
-                        or pygame.sprite.spritecollide(self, moving_textures_sprites, False):
+                if pygame.sprite.spritecollide(self, stative_textures_sprites, False):
                     self.rect.y -= 6
                 else:
                     if fighter1.direction == 'left':
@@ -148,45 +135,10 @@ class Ball1(pygame.sprite.Sprite):
 
         if (
             pygame.sprite.spritecollide(ball1, stative_textures_sprites, False) or
-            pygame.sprite.spritecollide(ball1, moving_textures_sprites, False) or
             pygame.sprite.spritecollide(ball1, ball2_sprite, False)
         ):
             ball1.rect.x, ball1.rect.y = 9999, 9999
             ball1.direction = 'none'
-
-
-class Ball2(pygame.sprite.Sprite):
-    image = load_image('fighter2', 'ball.png')
-
-    def __init__(self, group):
-        super().__init__(group)
-        self.falling = 0
-        self.image = Ball2.image
-        self.rect = self.image.get_rect()
-        self.width, self.height = 14, 14
-        self.rect.x, self.rect.y = fighter2.rect.x + 31, fighter2.rect.y + 26
-        self.direction = fighter2.direction
-
-    def update(self):
-        if self.direction == 'left':
-            self.rect.x -= 10
-        elif self.direction == 'right':
-            self.rect.x += 10
-
-        if pygame.sprite.spritecollide(ball2, fighter1_sprite, False):
-            fighter1.hp -= 1
-            ball2.rect.x, ball2.rect.y = 9999, 9999
-            ball2.direction = 'none'
-        if fighter1.hp == 0:
-            print('Second player won!')
-
-        if (
-            pygame.sprite.spritecollide(ball2, stative_textures_sprites, False) or
-            pygame.sprite.spritecollide(ball2, moving_textures_sprites, False) or
-            pygame.sprite.spritecollide(ball2, ball1_sprite, False)
-        ):
-            ball2.rect.x, ball2.rect.y = 9999, 9999
-            ball2.direction = 'none'
 
 
 class Fighter2(pygame.sprite.Sprite):
@@ -228,15 +180,13 @@ class Fighter2(pygame.sprite.Sprite):
             if not self.on_ground:
                 self.falling += 0.25
                 self.rect.y += 6 + self.falling // 1
-                if pygame.sprite.spritecollide(self, stative_textures_sprites, False) \
-                        or pygame.sprite.spritecollide(self, moving_textures_sprites, False):
+                if pygame.sprite.spritecollide(self, stative_textures_sprites, False):
                     self.rect.y -= 6 + self.falling // 1
                     self.falling = 0
                     self.on_ground = True
             else:
                 self.rect.y += 6
-                if pygame.sprite.spritecollide(self, stative_textures_sprites, False) \
-                        or pygame.sprite.spritecollide(self, moving_textures_sprites, False):
+                if pygame.sprite.spritecollide(self, stative_textures_sprites, False):
                     self.rect.y -= 6
                 else:
                     self.on_ground = False
@@ -248,49 +198,45 @@ class Fighter2(pygame.sprite.Sprite):
                 fighter2.image = fighter2.images['jumping'][1]
 
 
-class MovingTexture(pygame.sprite.Sprite):
-    def __init__(self, group, x, y, object_name):
+class Ball2(pygame.sprite.Sprite):
+    image = load_image('fighter2', 'ball.png')
+
+    def __init__(self, group):
         super().__init__(group)
-        self.image = load_texture(object_name)
+        self.falling = 0
+        self.image = Ball2.image
         self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.width, self.height = 14, 14
+        self.rect.x, self.rect.y = fighter2.rect.x + 31, fighter2.rect.y + 26
+        self.direction = fighter2.direction
+
+    def update(self):
+        if self.direction == 'left':
+            self.rect.x -= 10
+        elif self.direction == 'right':
+            self.rect.x += 10
+
+        if pygame.sprite.spritecollide(ball2, fighter1_sprite, False):
+            fighter1.hp -= 1
+            ball2.rect.x, ball2.rect.y = 9999, 9999
+            ball2.direction = 'none'
+        if fighter1.hp == 0:
+            print('Second player won!')
+
+        if (
+            pygame.sprite.spritecollide(ball2, stative_textures_sprites, False) or
+            pygame.sprite.spritecollide(ball2, ball1_sprite, False)
+        ):
+            ball2.rect.x, ball2.rect.y = 9999, 9999
+            ball2.direction = 'none'
 
 
-class StativeTexture(pygame.sprite.Sprite):
-    def __init__(self, group, x1, y1, x2, y2):
-        super().__init__(group)
-        width_sprite = x2 - x1
-        height_sprite = y2 - y1
-        self.image = pygame.Surface((width_sprite, height_sprite))
-        self.rect = self.image.get_rect()
-        self.rect.x = x1
-        self.rect.y = y1
-
-
-stative_textures_sprites = pygame.sprite.Group()
-moving_textures_sprites = pygame.sprite.Group()
-unused_sprites = pygame.sprite.Group()
-
-box1 = MovingTexture(stative_textures_sprites, 150, 425, 'medium_box.png')
-box2 = MovingTexture(stative_textures_sprites, 350, 400, 'big_box.png')
-box3 = MovingTexture(stative_textures_sprites, 600, 450, 'small_box.png')
-box4 = MovingTexture(stative_textures_sprites, 750, 425, 'medium_box.png')
-
-sad = StativeTexture(stative_textures_sprites, 0, 500, 960, 540)
-asd = StativeTexture(stative_textures_sprites, 0, 0, 960, 40)
-sdf = StativeTexture(stative_textures_sprites, 0, 0, 40, 540)
-dfg = StativeTexture(stative_textures_sprites, 920, 0, 960, 540)
-dyt = StativeTexture(stative_textures_sprites, 100, 250, 860, 290)
-
-fighter1_sprite = pygame.sprite.Group()
 fighter1 = Fighter1(fighter1_sprite)
-
-fighter2_sprite = pygame.sprite.Group()
 fighter2 = Fighter2(fighter2_sprite)
 
 ball1_sprite = pygame.sprite.Group()
 ball2_sprite = pygame.sprite.Group()
+building()
 
 counter, running, clock, fps = 0, True, pygame.time.Clock(), 60
 
@@ -306,6 +252,7 @@ while running:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            print(counter)
             running = False
 
     pressed = pygame.key.get_pressed()
@@ -314,8 +261,7 @@ while running:
         jumped1 -= 1
         jj1 -= 0.5
         fighter1.rect.y -= jj1 // 1
-        if pygame.sprite.spritecollide(fighter1, stative_textures_sprites, False) \
-                or pygame.sprite.spritecollide(fighter1, moving_textures_sprites, False):
+        if pygame.sprite.spritecollide(fighter1, stative_textures_sprites, False):
             fighter1.rect.y += jj1 // 1
             jumped1 = 20
             jj1 = 10
@@ -329,8 +275,7 @@ while running:
         jumped2 -= 1
         jj2 -= 0.5
         fighter2.rect.y -= jj2 // 1
-        if pygame.sprite.spritecollide(fighter2, stative_textures_sprites, False) \
-                or pygame.sprite.spritecollide(fighter2, moving_textures_sprites, False):
+        if pygame.sprite.spritecollide(fighter2, stative_textures_sprites, False):
             fighter2.rect.y += jj2 // 1
             jumped2 = 20
             jj2 = 10
@@ -350,8 +295,7 @@ while running:
                     fighter1.image = fighter1.images['running'][0]
 
         fighter1.rect.x += 5
-        if pygame.sprite.spritecollide(fighter1, stative_textures_sprites, False) \
-                or pygame.sprite.spritecollide(fighter1, moving_textures_sprites, False):
+        if pygame.sprite.spritecollide(fighter1, stative_textures_sprites, False):
             fighter1.rect.x -= 5
 
     if pressed[pygame.K_a]:
@@ -364,8 +308,7 @@ while running:
                     fighter1.image = fighter1.images['running'][2]
 
         fighter1.rect.x -= 5
-        if pygame.sprite.spritecollide(fighter1, stative_textures_sprites, False) \
-                or pygame.sprite.spritecollide(fighter1, moving_textures_sprites, False):
+        if pygame.sprite.spritecollide(fighter1, stative_textures_sprites, False):
             fighter1.rect.x += 5
 
     if not pressed[pygame.K_d] and not pressed[pygame.K_a] and not jumping1 and fighter2.on_ground:
@@ -408,8 +351,7 @@ while running:
                     fighter2.image = fighter2.images['running'][2]
 
         fighter2.rect.x += 5
-        if pygame.sprite.spritecollide(fighter2, stative_textures_sprites, False) \
-                or pygame.sprite.spritecollide(fighter2, moving_textures_sprites, False):
+        if pygame.sprite.spritecollide(fighter2, stative_textures_sprites, False):
             fighter2.rect.x -= 5
 
     if pressed[pygame.K_LEFT]:
@@ -422,8 +364,7 @@ while running:
                     fighter2.image = fighter2.images['running'][0]
 
         fighter2.rect.x -= 5
-        if pygame.sprite.spritecollide(fighter2, stative_textures_sprites, False) \
-                or pygame.sprite.spritecollide(fighter2, moving_textures_sprites, False):
+        if pygame.sprite.spritecollide(fighter2, stative_textures_sprites, False):
             fighter2.rect.x += 5
 
     if not pressed[pygame.K_RIGHT] and not pressed[pygame.K_LEFT] and not jumping2 and fighter2.on_ground:
