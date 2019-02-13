@@ -2,9 +2,6 @@ from BuildingLevels import load_sprite, Background, StativeTexture, stative_text
 
 def building():
 	narkomany = False
-	background = Background(background_sprites, 'flash.jpg')
-	Fighter(fighter1_sprite, (551, 194))
-	Fighter(fighter1_sprite, (1123, 263))
-	Fighter(fighter1_sprite, (776, 327))
-	Fighter(fighter1_sprite, (485, 431))
-	StativeTexture(stative_textures_sprites, (312, 563), (1496, 609))
+	background = Background(background_sprites, 'lave.jpg')
+	StativeTexture(stative_textures_sprites, (488, 348), (771, 486))
+	StativeTexture(stative_textures_sprites, (72, 759), (1771, 686))

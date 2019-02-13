@@ -4,8 +4,9 @@ from BuildingLevels import load_sprite, Background, StativeTexture, stative_text
     fighter1_sprite, fighter2_sprite
 from NewLevel import building
 
+
 size = screen_width, screen_height = 1920, 1080
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 
 
 def load_image(folder, name, colorkey=None):
@@ -25,6 +26,7 @@ def load_image(folder, name, colorkey=None):
 
 def screen_update():
     screen.fill(pygame.Color('#ffffff'))
+    background_sprites.draw(screen)
 
     stative_textures_sprites.draw(screen)
     stative_textures_sprites.update()
@@ -39,8 +41,43 @@ def screen_update():
     ball2_sprite.update()
     ball2_sprite.draw(screen)
 
+    bonus_sprites.draw(screen)
+
+    fighter1_won_sprite.draw(screen)
+    fighter2_won_sprite.draw(screen)
+
     pygame.display.flip()
     clock.tick(fps)
+
+
+def restart_game():
+    screen_update.fighter1_won_sprite = pygame.sprite.Group()
+    screen_update.fighter2_won_sprite = pygame.sprite.Group()
+
+    fighter1.hp = 3
+    fighter2.hp = 3
+
+
+class Fighter1Won(pygame.sprite.Sprite):
+    image = load_image('backgrounds', 'first_player_won.png')
+
+    def __init__(self, group):
+        super().__init__(group)
+        screen.fill(pygame.Color('#000000'))
+        self.rect = self.image.get_rect()
+        self.rect.x, self.rect.y = 0, 0
+        restart_game()
+
+
+class Fighter2Won(pygame.sprite.Sprite):
+    image = load_image('backgrounds', 'second_player_won.png')
+
+    def __init__(self, group):
+        super().__init__(group)
+        screen.fill(pygame.Color('#000000'))
+        self.rect = self.image.get_rect()
+        self.rect.x, self.rect.y = 0, 0
+        restart_game()
 
 
 class Fighter1(pygame.sprite.Sprite):
@@ -131,7 +168,7 @@ class Ball1(pygame.sprite.Sprite):
             ball1.rect.x, ball1.rect.y = 9999, 9999
             ball1.direction = 'none'
         if fighter2.hp == 0:
-            print('First player won!')
+            first_player_won = Fighter1Won(fighter1_won_sprite)
 
         if (
             pygame.sprite.spritecollide(ball1, stative_textures_sprites, False) or
@@ -221,7 +258,7 @@ class Ball2(pygame.sprite.Sprite):
             ball2.rect.x, ball2.rect.y = 9999, 9999
             ball2.direction = 'none'
         if fighter1.hp == 0:
-            print('Second player won!')
+            second_player_won = Fighter2Won(fighter2_won_sprite)
 
         if (
             pygame.sprite.spritecollide(ball2, stative_textures_sprites, False) or
@@ -231,11 +268,17 @@ class Ball2(pygame.sprite.Sprite):
             ball2.direction = 'none'
 
 
+fighter1_won_sprite = pygame.sprite.Group()
+fighter2_won_sprite = pygame.sprite.Group()
+
 fighter1 = Fighter1(fighter1_sprite)
 fighter2 = Fighter2(fighter2_sprite)
 
 ball1_sprite = pygame.sprite.Group()
 ball2_sprite = pygame.sprite.Group()
+
+bonus_sprites = pygame.sprite.Group()
+
 building()
 
 counter, running, clock, fps = 0, True, pygame.time.Clock(), 60
@@ -396,6 +439,26 @@ while running:
 
     if fighter2.attacked:
         fighter2.attack_time += 1
+
+    for obj in bonus_sprites:
+        if pygame.sprite.spritecollide(obj, fighter1_sprite, False):
+            if 0 < fighter1.hp < 3:
+                fighter1.hp += 1
+                obj.rect.x, obj.rect.y = 9999, 9999
+                obj.restart_time = 0
+
+        if pygame.sprite.spritecollide(obj, fighter2_sprite, False):
+            if 0 < fighter2.hp < 3:
+                fighter2.hp += 1
+                obj.rect.x, obj.rect.y = 9999, 9999
+                obj.restart_time = 0
+
+        if obj.restart_time >= 0:
+            obj.restart_time += 1
+
+        if obj.restart_time == 500:
+            obj.rect.x, obj.rect.y = obj.def_x, obj.def_y
+            obj.restart_time = -1
 
     screen_update()
 
