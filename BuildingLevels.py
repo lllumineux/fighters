@@ -7,6 +7,7 @@ background_sprites = pygame.sprite.Group()
 fighter1_sprite = pygame.sprite.Group()
 fighter2_sprite = pygame.sprite.Group()
 
+
 def load_sprite(name, path):
     fullname = os.path.join(path, name)
     try:
@@ -15,6 +16,21 @@ def load_sprite(name, path):
         print('Cannot load image: ', name)
         raise SystemExit
     image = image.convert_alpha()
+    return image
+
+
+def load_image(folder, name, colorkey=None):
+    fullname = os.path.join('data', folder + '/' + name)
+    try:
+        image = pygame.image.load(fullname)
+    except pygame.error:
+        print('Cannot load image: ', name)
+        raise SystemExit
+    image = image.convert_alpha()
+    if colorkey is not None:
+        if colorkey is -1:
+            colorkey = image.get_at((0, 0))
+        image.set_colorkey(colorkey)
     return image
 
 

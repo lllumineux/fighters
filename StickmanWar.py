@@ -1,6 +1,7 @@
 import pygame
 import os
-from BuildingLevels import load_sprite, Background, StativeTexture, stative_textures_sprites, background_sprites, \
+import time
+from BuildingLevels import stative_textures_sprites, background_sprites, \
     fighter1_sprite, fighter2_sprite
 from NewLevel import building
 
@@ -25,37 +26,61 @@ def load_image(folder, name, colorkey=None):
 
 
 def screen_update():
-    screen.fill(pygame.Color('#ffffff'))
-    background_sprites.draw(screen)
+    if not running:
+        fighter1_won_sprite.draw(screen)
+        fighter2_won_sprite.draw(screen)
+    else:
+        if not narkomany:
+            screen.fill((0, 0, 0))
+            background_sprites.draw(screen)
+        else:
+            global back
+            global change
+            if not change:
+                back = (back[0] - 6, 0, back[2] + 6)
+                if back[0] == 0:
+                    change = True
+            else:
+                back = (back[0] + 6, 0, back[2] - 6)
+                if back[2] == 0:
+                    change = False
 
-    stative_textures_sprites.draw(screen)
-    stative_textures_sprites.update()
+            screen.fill(back)
 
-    fighter1_sprite.update()
-    fighter2_sprite.update()
-    fighter1_sprite.draw(screen)
-    fighter2_sprite.draw(screen)
+        stative_textures_sprites.draw(screen)
+        stative_textures_sprites.update()
 
-    ball1_sprite.update()
-    ball1_sprite.draw(screen)
-    ball2_sprite.update()
-    ball2_sprite.draw(screen)
+        fighter1_sprite.update()
+        fighter2_sprite.update()
+        fighter1_sprite.draw(screen)
+        fighter2_sprite.draw(screen)
+        bonus_sprites.draw(screen)
 
-    bonus_sprites.draw(screen)
-
-    fighter1_won_sprite.draw(screen)
-    fighter2_won_sprite.draw(screen)
+        ball1_sprite.update()
+        ball1_sprite.draw(screen)
+        ball2_sprite.update()
+        ball2_sprite.draw(screen)
 
     pygame.display.flip()
     clock.tick(fps)
 
 
 def restart_game():
-    screen_update.fighter1_won_sprite = pygame.sprite.Group()
-    screen_update.fighter2_won_sprite = pygame.sprite.Group()
+    global running
+    running = False
+    screen_update()
+    time.sleep(3.5)
 
-    fighter1.hp = 3
-    fighter2.hp = 3
+
+class Bonus(pygame.sprite.Sprite):
+    image = load_image('bonuses', 'hp_bonus.png')
+
+    def __init__(self, group, spos):
+        super().__init__(group)
+        self.rect = self.image.get_rect()
+        self.def_x, self.def_y = spos
+        self.rect.x, self.rect.y = self.def_x, self.def_y
+        self.restart_time = -1
 
 
 class Fighter1Won(pygame.sprite.Sprite):
@@ -102,13 +127,13 @@ class Fighter1(pygame.sprite.Sprite):
         )
     }
 
-    def __init__(self, group):
+    def __init__(self, group, spos):
         super().__init__(group)
         self.falling = 0
         self.image = Fighter1.images['standing'][0]
         self.rect = self.image.get_rect()
         self.width, self.height = self.rect[2], self.rect[3]
-        self.rect.x, self.rect.y = 100, 100
+        self.rect.x, self.rect.y = spos
         self.direction = 'right'
         self.on_ground = False
         self.attacked, self.attack_time = False, 0
@@ -117,10 +142,10 @@ class Fighter1(pygame.sprite.Sprite):
     def update(self):
         if not jumping1:
             if not self.on_ground:
-                if fighter1.direction == 'left':
-                    fighter1.image = fighter1.images['jumping'][0]
+                if self.direction == 'left':
+                    self.image = self.images['jumping'][0]
                 else:
-                    fighter1.image = fighter1.images['jumping'][1]
+                    self.image = self.images['jumping'][1]
                 self.falling += 0.25
                 self.rect.y += 6 + self.falling // 1
                 if pygame.sprite.spritecollide(self, stative_textures_sprites, False):
@@ -132,17 +157,17 @@ class Fighter1(pygame.sprite.Sprite):
                 if pygame.sprite.spritecollide(self, stative_textures_sprites, False):
                     self.rect.y -= 6
                 else:
-                    if fighter1.direction == 'left':
-                        fighter1.image = fighter1.images['jumping'][0]
+                    if self.direction == 'left':
+                        self.image = self.images['jumping'][0]
                     else:
-                        fighter1.image = fighter1.images['jumping'][1]
+                        self.image = self.images['jumping'][1]
                     self.on_ground = False
 
         if not self.on_ground:
-            if fighter1.direction == 'left':
-                fighter1.image = fighter1.images['jumping'][0]
+            if self.direction == 'left':
+                self.image = self.images['jumping'][0]
             else:
-                fighter1.image = fighter1.images['jumping'][1]
+                self.image = self.images['jumping'][1]
 
 
 class Ball1(pygame.sprite.Sprite):
@@ -168,7 +193,8 @@ class Ball1(pygame.sprite.Sprite):
             ball1.rect.x, ball1.rect.y = 9999, 9999
             ball1.direction = 'none'
         if fighter2.hp == 0:
-            first_player_won = Fighter1Won(fighter1_won_sprite)
+            global a
+            a = Fighter1Won(fighter1_won_sprite)
 
         if (
             pygame.sprite.spritecollide(ball1, stative_textures_sprites, False) or
@@ -200,13 +226,13 @@ class Fighter2(pygame.sprite.Sprite):
         )
     }
 
-    def __init__(self, group):
+    def __init__(self, group, spos):
         super().__init__(group)
         self.falling = 0
         self.image = Fighter1.images['standing'][0]
         self.rect = self.image.get_rect()
         self.width, self.height = self.rect[2], self.rect[3]
-        self.rect.x, self.rect.y = 810, 100
+        self.rect.x, self.rect.y = spos
         self.direction = 'left'
         self.on_ground = False
         self.attacked, self.attack_time = False, 0
@@ -229,10 +255,10 @@ class Fighter2(pygame.sprite.Sprite):
                     self.on_ground = False
 
         if not self.on_ground:
-            if fighter2.direction == 'left':
-                fighter2.image = fighter2.images['jumping'][0]
+            if self.direction == 'left':
+                self.image = self.images['jumping'][0]
             else:
-                fighter2.image = fighter2.images['jumping'][1]
+                self.image = self.images['jumping'][1]
 
 
 class Ball2(pygame.sprite.Sprite):
@@ -258,7 +284,8 @@ class Ball2(pygame.sprite.Sprite):
             ball2.rect.x, ball2.rect.y = 9999, 9999
             ball2.direction = 'none'
         if fighter1.hp == 0:
-            second_player_won = Fighter2Won(fighter2_won_sprite)
+            global a
+            a = Fighter2Won(fighter1_won_sprite)
 
         if (
             pygame.sprite.spritecollide(ball2, stative_textures_sprites, False) or
@@ -268,18 +295,22 @@ class Ball2(pygame.sprite.Sprite):
             ball2.direction = 'none'
 
 
+back = (252, 0, 0)
+change = False
+
 fighter1_won_sprite = pygame.sprite.Group()
 fighter2_won_sprite = pygame.sprite.Group()
-
-fighter1 = Fighter1(fighter1_sprite)
-fighter2 = Fighter2(fighter2_sprite)
+bonus_sprites = pygame.sprite.Group()
 
 ball1_sprite = pygame.sprite.Group()
 ball2_sprite = pygame.sprite.Group()
 
-bonus_sprites = pygame.sprite.Group()
+bonus_mas_pos, narkomany, fighters_mas_pos = building()
+for pos in bonus_mas_pos:
+    Bonus(bonus_sprites, pos)
 
-building()
+fighter1 = Fighter1(fighter1_sprite, fighters_mas_pos[0])
+fighter2 = Fighter2(fighter2_sprite, fighters_mas_pos[1])
 
 counter, running, clock, fps = 0, True, pygame.time.Clock(), 60
 
@@ -299,6 +330,10 @@ while running:
             running = False
 
     pressed = pygame.key.get_pressed()
+
+    if pressed[pygame.K_ESCAPE]:
+        print(counter)
+        running = False
 
     if jumping1:
         jumped1 -= 1

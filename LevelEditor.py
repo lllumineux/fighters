@@ -35,23 +35,43 @@ def draw_object(pos1, pos2):
     mas_act.append(StativeTexture(objects_sprites, pos1, pos2))
 
 
-def draw_stickman(spos):
+def draw_bonus(spos):
+    mas_act.append(Bonus(objects_sprites, spos))
+
+
+def draw_fighter(spos):
     mas_act.append(Fighter(objects_sprites, spos))
 
 
 class Fighter(pygame.sprite.Sprite):
+    images = {
+        'standing': (
+            load_image('fighter1', 'standing1.png'),
+            load_image('fighter1', 'standing2.png')
+        ),
+        'running': (
+            load_image('fighter1', 'running1.png'),
+            load_image('fighter1', 'running2.png'),
+            load_image('fighter1', 'running3.png'),
+            load_image('fighter1', 'running4.png')
+        ),
+        'jumping': (
+            load_image('fighter1', 'jumping1.png'),
+            load_image('fighter1', 'jumping2.png'),
+        ),
+        'attacking': (
+            load_image('fighter1', 'attacking1.png'),
+            load_image('fighter1', 'attacking2.png')
+        )
+    }
 
     def __init__(self, group, spos):
         super().__init__(group)
-        self.falling = 0
-        self.image = load_image('fighter1', 'standing1.png')
+        self.image = Fighter.images['standing'][0]
         self.rect = self.image.get_rect()
         self.width, self.height = self.rect[2], self.rect[3]
         self.rect.x, self.rect.y = spos
         self.direction = 'right'
-        self.on_ground = False
-        self.attacked, self.attack_time = False, 0
-        self.hp = 3
 
 
 class StativeTexture(pygame.sprite.Sprite):
@@ -63,6 +83,17 @@ class StativeTexture(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = min(pos1[0], pos2[0])
         self.rect.y = min(pos1[1], pos2[1])
+
+
+class Bonus(pygame.sprite.Sprite):
+    image = load_image('bonuses', 'hp_bonus.png')
+
+    def __init__(self, group, spos):
+        super().__init__(group)
+        self.rect = self.image.get_rect()
+        self.def_x, self.def_y = spos
+        self.rect.x, self.rect.y = self.def_x, self.def_y
+        self.restart_time = -1
 
 
 class FoneMini(pygame.sprite.Sprite):
@@ -98,12 +129,29 @@ def screen_update_choose_fone():
 
 
 def screen_update():
-    screen.fill((0, 0, 0))
-    background_sprites.draw(screen)
+    if not narkomany:
+        screen.fill((0, 0, 0))
+        background_sprites.draw(screen)
+    else:
+        global background
+        global change
+        if not change:
+            background = (background[0] - 6, 0, background[2] + 6)
+            if background[0] == 0:
+                change = True
+        else:
+            background = (background[0] + 6, 0, background[2] - 6)
+            if background[2] == 0:
+                change = False
+
+        screen.fill(background)
     objects_sprites.draw(screen)
     pygame.display.flip()
     clock.tick(fps)
 
+
+background = (252, 0, 0)
+change = False
 
 mini_fone_sprites = pygame.sprite.Group()
 background_sprites = pygame.sprite.Group()
@@ -123,6 +171,8 @@ storm = FoneMini(mini_fone_sprites, 1280, 360, 'storm.jpg')
 
 white = FoneMini(mini_fone_sprites, 0, 720, 'white.png')
 
+windows = FoneMini(mini_fone_sprites, 640, 720, 'windows.png')
+
 narko = FoneMini(mini_fone_sprites, 1280, 720, 'narko.png')
 
 running, clock, fps = True, pygame.time.Clock(), 60
@@ -130,6 +180,7 @@ fone_name = None
 
 exit_code = False
 narkomany = False
+fighters = 0
 
 while running:
     for event in pygame.event.get():
@@ -163,9 +214,14 @@ if not exit_code:
     fighter2 = None
 
     with open('NewLevel.py', 'w') as f:
-        f.write('from BuildingLevels import load_sprite, Background, StativeTexture, stative_textures_sprites, \
-         background_sprites, fighter1_sprite, fighter2_sprite' '\n' + '\n')
+        f.write('from BuildingLevels import Background, StativeTexture, stative_textures_sprites,\\\n')
+        f.write('\tbackground_sprites' + '\n' + '\n' + '\n')
         f.write('def building():' + '\n')
+        f.write('\t' + 'global bonus_mas_pos' + '\n')
+        f.write('\t' + 'global narkomany' + '\n')
+        f.write('\t' + 'global background' + '\n')
+        f.write('\t' + 'bonus_mas_pos = []' + '\n')
+        f.write('\t' + 'fighters_mas_pos = []' + '\n')
         if narkomany:
             f.write('\t' + 'narkomany = True' + '\n')
         else:
@@ -179,6 +235,7 @@ if not exit_code:
                     for i in mas_write:
                         stroka += i
                     f.write(stroka)
+                    f.write('\treturn bonus_mas_pos, narkomany, fighters_mas_pos\n')
                     running = False
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -196,20 +253,21 @@ if not exit_code:
                             mas_write.append(stroka)
                             positioning = False
 
-                    elif event.button == 2 and not fighter2:  # Not ready
-                        pos = pygame.mouse.get_pos()
-
-                        draw_stickman(pos)
-
-                        if not fighter1:
-                            stroka = '\t' + 'Fighter(fighter1_sprite, ' + str(pos) + ')' + '\n'
-                        else:
-                            stroka = '\t' + 'Fighter(fighter2_sprite, ' + str(pos) + ')' + '\n'
-
-                        mas_write.append(stroka)
                     elif event.button == 3:
-                        pass
-                        # Сделай бонусы
+                        pos = pygame.mouse.get_pos()
+                        draw_bonus(pos)
+                        stroka = '\t' + 'bonus_mas_pos.append(' \
+                                 + str(pos) + ')' + '\n'
+                        mas_write.append(stroka)
+
+                    elif event.button == 2:
+                        if fighters != 2:
+                            pos = pygame.mouse.get_pos()
+                            draw_fighter(pos)
+                            stroka = '\t' + 'fighters_mas_pos.append(' \
+                                     + str(pos) + ')' + '\n'
+                            mas_write.append(stroka)
+                            fighters += 1
 
                 if event.type == 2:
                     if positioning:
@@ -217,6 +275,8 @@ if not exit_code:
                     else:
                         try:
                             objects_sprites.remove(mas_act[-1])
+                            if type(mas_act[-1]) == Fighter:
+                                fighters -= 1
                             mas_act.pop(-1)
                             mas_write.pop(-1)
                         except IndexError:
