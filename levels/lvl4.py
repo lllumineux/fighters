@@ -1,0 +1,2 @@
+def building():
+    return [], False, []

@@ -40,7 +40,7 @@ def draw_bonus(spos):
 
 
 def draw_fighter(spos):
-    mas_act.append(Fighter(objects_sprites, spos))
+    mas_act.append(Fighter(objects_sprites, spos, fighters))
 
 
 class Fighter(pygame.sprite.Sprite):
@@ -65,9 +65,9 @@ class Fighter(pygame.sprite.Sprite):
         )
     }
 
-    def __init__(self, group, spos):
+    def __init__(self, group, spos, f):
         super().__init__(group)
-        self.image = Fighter.images['standing'][0]
+        self.image = Fighter.images['standing'][f]
         self.rect = self.image.get_rect()
         self.width, self.height = self.rect[2], self.rect[3]
         self.rect.x, self.rect.y = spos

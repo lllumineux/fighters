@@ -3,14 +3,13 @@ import os
 import time
 from BuildingLevels import stative_textures_sprites, background_sprites, \
     fighter1_sprite, fighter2_sprite
-from NewLevel import building
 
 
 size = screen_width, screen_height = 1920, 1080
 screen = pygame.display.set_mode(size, pygame.FULLSCREEN)
 
 
-def load_image(folder, name, colorkey=None):
+def load_image(folder, name, colorkey=None):  # Made by Ramil
     fullname = os.path.join('data', folder + '/' + name)
     try:
         image = pygame.image.load(fullname)
@@ -22,6 +21,18 @@ def load_image(folder, name, colorkey=None):
         if colorkey is -1:
             colorkey = image.get_at((0, 0))
         image.set_colorkey(colorkey)
+    return image
+
+
+def load_sprite(name, path):  # Made by Sergey
+    fullname = os.path.join(path, name)
+    try:
+        print(fullname)
+        image = pygame.image.load(fullname)
+    except pygame.error:
+        print('Cannot load image: ', name)
+        raise SystemExit
+    image = image.convert_alpha()
     return image
 
 
@@ -295,6 +306,88 @@ class Ball2(pygame.sprite.Sprite):
             ball2.direction = 'none'
 
 
+def screen_update_choose_level():
+    screen.fill((0, 0, 0))
+    mini_level_sprites.draw(screen)
+    pygame.display.flip()
+    clock.tick(fps)
+
+
+class LevelMini(pygame.sprite.Sprite):
+    def __init__(self, group, x, y, image, level):
+        super().__init__(group)
+        self.level = level
+        self.image_name = image
+        self.image = load_sprite(image, 'levels_miniatures')
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
+    def get_event(self, spos):
+        if self.rect.collidepoint(spos):
+            global level_name
+            level_name = self.level
+
+
+mini_level_sprites = pygame.sprite.Group()
+level_name = None
+
+flash = LevelMini(mini_level_sprites, 0, 0, 'flash.png', 1)
+
+lave = LevelMini(mini_level_sprites, 640, 0, 'lave.jpg', 2)
+
+perfecto = LevelMini(mini_level_sprites, 1280, 0, 'perfecto.jpg', 3)
+
+redline = LevelMini(mini_level_sprites, 0, 360, 'redline.jpg', 4)
+
+redone = LevelMini(mini_level_sprites, 640, 360, 'redone.jpg', 5)
+
+storm = LevelMini(mini_level_sprites, 1280, 360, 'storm.jpg', 6)
+
+white = LevelMini(mini_level_sprites, 0, 720, 'white.png', 7)
+
+windows = LevelMini(mini_level_sprites, 640, 720, 'windows.png', 8)
+
+narko = LevelMini(mini_level_sprites, 1280, 720, 'narko.png', 9)
+
+counter, running, clock, fps = 0, True, pygame.time.Clock(), 60
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit_code = True
+            running = False
+        if event.type == pygame.MOUSEBUTTONDOWN:  # При нажатии мыши
+            pos = pygame.mouse.get_pos()
+            for i in mini_level_sprites:
+                i.get_event(pos)
+                if level_name:
+                    break
+    if level_name:
+        running = False
+
+    screen_update_choose_level()
+
+
+if level_name == 1:
+    from levels.lvl1 import building
+elif level_name == 2:
+    from levels.lvl2 import building
+elif level_name == 3:
+    from levels.lvl3 import building
+elif level_name == 4:
+    from levels.lvl4 import building
+elif level_name == 5:
+    from levels.lvl5 import building
+elif level_name == 6:
+    from levels.lvl6 import building
+elif level_name == 7:
+    from levels.lvl7 import building
+elif level_name == 8:
+    from levels.lvl8 import building
+elif level_name == 9:
+    from levels.lvl9 import building
+
 back = (252, 0, 0)
 change = False
 
@@ -312,7 +405,7 @@ for pos in bonus_mas_pos:
 fighter1 = Fighter1(fighter1_sprite, fighters_mas_pos[0])
 fighter2 = Fighter2(fighter2_sprite, fighters_mas_pos[1])
 
-counter, running, clock, fps = 0, True, pygame.time.Clock(), 60
+running = True
 
 jumping1 = False
 jumping2 = False

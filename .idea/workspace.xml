@@ -2,15 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c576768-c9f6-40fc-8e44-cbc60c64150b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/fighters.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fighters.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels/lvl9.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/flash.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/lave.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/narko.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/perfecto.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/redline.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/redone.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/storm.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/levels_miniatures/windows.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildingLevels.py" beforeDir="false" afterPath="$PROJECT_DIR$/BuildingLevels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LevelEditor.py" beforeDir="false" afterPath="$PROJECT_DIR$/LevelEditor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewLevel.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewLevel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StickmanWar.py" beforeDir="false" afterPath="$PROJECT_DIR$/StickmanWar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fones_miniaturs/narko.png" beforeDir="false" afterPath="$PROJECT_DIR$/fones_miniaturs/narko.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fones_miniaturs/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/fones_miniaturs/white.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,63 +36,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StickmanWar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+            <state relative-caret-position="32">
+              <caret line="75" column="19" lean-forward="true" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
               <folding>
-                <element signature="e#366#752#0" />
+                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#339#725#0" />
+                <element signature="e#780#1325#0" />
                 <element signature="e#1352#1512#0" />
                 <element signature="e#1533#1817#0" />
                 <element signature="e#1560#1831#0" />
                 <element signature="e#1879#2151#0" />
+                <element signature="e#2196#4571#0" />
                 <element signature="e#4613#5690#0" />
                 <element signature="e#5735#7683#0" />
                 <element signature="e#7725#8803#0" />
+                <element signature="e#9478#9581#0" />
                 <element signature="e#9259#15091#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/save.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="310" selection-start-line="310" selection-end-line="311" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#2401#2672#0" />
-                <element signature="e#2720#2992#0" />
-                <element signature="e#3037#5412#0" />
-                <element signature="e#6581#8529#0" />
-                <element signature="e#8571#9655#0" />
-                <element signature="e#11405#17291#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/LevelEditor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="237" column="80" selection-start-line="237" selection-start-column="80" selection-end-line="237" selection-end-column="80" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BuildingLevels.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-345">
-              <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +63,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NewLevel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            <state>
+              <caret selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/levels/lvl1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LevelEditor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="192" column="32" lean-forward="true" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,7 +106,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test1.py" />
-        <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/../fighters — копия/StickmanWar.py" />
         <option value="$PROJECT_DIR$/awg.py" />
         <option value="$PROJECT_DIR$/test.py" />
@@ -118,7 +113,19 @@
         <option value="$PROJECT_DIR$/BuildingLevels.py" />
         <option value="$PROJECT_DIR$/NewLevel.py" />
         <option value="$PROJECT_DIR$/LevelEditor.py" />
+        <option value="$PROJECT_DIR$/levels/test.py" />
+        <option value="$PROJECT_DIR$/test2.py" />
+        <option value="$PROJECT_DIR$/levels/1.py" />
+        <option value="$PROJECT_DIR$/levels/2.py" />
+        <option value="$PROJECT_DIR$/levels/3.py" />
+        <option value="$PROJECT_DIR$/levels/4.py" />
+        <option value="$PROJECT_DIR$/levels/5.py" />
+        <option value="$PROJECT_DIR$/levels/6.py" />
+        <option value="$PROJECT_DIR$/levels/7.py" />
+        <option value="$PROJECT_DIR$/levels/8.py" />
+        <option value="$PROJECT_DIR$/levels/9.py" />
         <option value="$PROJECT_DIR$/StickmanWar.py" />
+        <option value="$PROJECT_DIR$/levels/lvl1.py" />
       </list>
     </option>
   </component>
@@ -139,6 +146,16 @@
             <path>
               <item name="fighters" type="b2602c69:ProjectViewProjectNode" />
               <item name="fighters" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fighters" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fighters" type="462c0819:PsiDirectoryNode" />
+              <item name="levels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fighters" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fighters" type="462c0819:PsiDirectoryNode" />
+              <item name="levels_miniatures" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -279,7 +296,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../StickmanWar.py" />
-    <entry file="file://$PROJECT_DIR$/test2.py" />
     <entry file="file://$PROJECT_DIR$/test1.py" />
     <entry file="file://$PROJECT_DIR$/awg.py" />
     <entry file="file://$PROJECT_DIR$/../fighters — копия/StickmanWar.py" />
@@ -312,37 +328,125 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StickmanWar.py">
+    <entry file="file://$PROJECT_DIR$/test2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/7.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/8.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/9.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LevelEditor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="192" column="32" lean-forward="true" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
           <folding>
-            <element signature="e#366#752#0" />
-            <element signature="e#1352#1512#0" />
-            <element signature="e#1533#1817#0" />
-            <element signature="e#1560#1831#0" />
-            <element signature="e#1879#2151#0" />
-            <element signature="e#4613#5690#0" />
-            <element signature="e#5735#7683#0" />
-            <element signature="e#7725#8803#0" />
-            <element signature="e#9259#15091#0" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NewLevel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        <state>
+          <caret selection-end-line="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LevelEditor.py">
+    <entry file="file://$PROJECT_DIR$/levels/lvl1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="237" column="80" selection-start-line="237" selection-start-column="80" selection-end-line="237" selection-end-column="80" />
+        <state relative-caret-position="369">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StickmanWar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="75" column="19" lean-forward="true" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#339#725#0" />
+            <element signature="e#780#1325#0" />
+            <element signature="e#1352#1512#0" />
+            <element signature="e#1533#1817#0" />
+            <element signature="e#1560#1831#0" />
+            <element signature="e#1879#2151#0" />
+            <element signature="e#2196#4571#0" />
+            <element signature="e#4613#5690#0" />
+            <element signature="e#5735#7683#0" />
+            <element signature="e#7725#8803#0" />
+            <element signature="e#9478#9581#0" />
+            <element signature="e#9259#15091#0" />
           </folding>
         </state>
       </provider>
