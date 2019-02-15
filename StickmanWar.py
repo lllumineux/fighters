@@ -80,7 +80,7 @@ def restart_game():
     global running
     running = False
     screen_update()
-    time.sleep(0.5)
+    time.sleep(1)
 
 
 class Bonus(pygame.sprite.Sprite):
@@ -351,6 +351,7 @@ windows = LevelMini(mini_level_sprites, 640, 720, 'windows.png', 8)
 narko = LevelMini(mini_level_sprites, 1280, 720, 'narko.png', 9)
 
 counter, running, clock, fps = 0, True, pygame.time.Clock(), 60
+end = False
 
 while running:
     for event in pygame.event.get():
@@ -363,49 +364,19 @@ while running:
                 i.get_event(pos)
                 if level_name:
                     break
+
+    pressed = pygame.key.get_pressed()
+
+    if pressed[pygame.K_ESCAPE]:
+        print(counter)
+        end = True
+        running = False
+
     if level_name:
         running = False
 
     screen_update_choose_level()
 
-
-if level_name == 1:
-    from levels.lvl1 import building
-elif level_name == 2:
-    from levels.lvl2 import building
-elif level_name == 3:
-    from levels.lvl3 import building
-elif level_name == 4:
-    from levels.lvl4 import building
-elif level_name == 5:
-    from levels.lvl5 import building
-elif level_name == 6:
-    from levels.lvl6 import building
-elif level_name == 7:
-    from levels.lvl7 import building
-elif level_name == 8:
-    from levels.lvl8 import building
-elif level_name == 9:
-    from levels.lvl9 import building
-
-back = (252, 0, 0)
-change = False
-
-fighter1_won_sprite = pygame.sprite.Group()
-fighter2_won_sprite = pygame.sprite.Group()
-bonus_sprites = pygame.sprite.Group()
-
-ball1_sprite = pygame.sprite.Group()
-ball2_sprite = pygame.sprite.Group()
-
-bonus_mas_pos, narkomany, fighters_mas_pos = building()
-for pos in bonus_mas_pos:
-    Bonus(bonus_sprites, pos)
-
-fighter1 = Fighter1(fighter1_sprite, fighters_mas_pos[0])
-fighter2 = Fighter2(fighter2_sprite, fighters_mas_pos[1])
-
-running = True
 
 jumping1 = False
 jumping2 = False
@@ -413,6 +384,54 @@ jumped1 = 20
 jumped2 = 20
 jj1 = 10
 jj2 = 10
+fighter1 = None
+fighter2 = None
+ball1_sprite = None
+ball2_sprite = None
+ball1 = None
+ball2 = None
+bonus_sprites = None
+fighter1_won_sprite = None
+fighter2_won_sprite = None
+
+if not end:
+    if level_name == 1:
+        from levels.lvl1 import building
+    elif level_name == 2:
+        from levels.lvl2 import building
+    elif level_name == 3:
+        from levels.lvl3 import building
+    elif level_name == 4:
+        from levels.lvl4 import building
+    elif level_name == 5:
+        from levels.lvl5 import building
+    elif level_name == 6:
+        from levels.lvl6 import building
+    elif level_name == 7:
+        from levels.lvl7 import building
+    elif level_name == 8:
+        from levels.lvl8 import building
+    elif level_name == 9:
+        from levels.lvl9 import building
+
+    back = (252, 0, 0)
+    change = False
+
+    fighter1_won_sprite = pygame.sprite.Group()
+    fighter2_won_sprite = pygame.sprite.Group()
+    bonus_sprites = pygame.sprite.Group()
+
+    ball1_sprite = pygame.sprite.Group()
+    ball2_sprite = pygame.sprite.Group()
+
+    bonus_mas_pos, narkomany, fighters_mas_pos = building()
+    for pos in bonus_mas_pos:
+        Bonus(bonus_sprites, pos)
+
+    fighter1 = Fighter1(fighter1_sprite, fighters_mas_pos[0])
+    fighter2 = Fighter2(fighter2_sprite, fighters_mas_pos[1])
+
+    running = True
 
 while running:
     counter += 1

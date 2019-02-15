@@ -2,62 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c576768-c9f6-40fc-8e44-cbc60c64150b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/fighters.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fighters.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewLevel.py" beforeDir="false" afterPath="$PROJECT_DIR$/NewLevel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StickmanWar.py" beforeDir="false" afterPath="$PROJECT_DIR$/StickmanWar.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl1.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl2.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl3.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl4.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl5.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl6.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl7.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl7.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl8.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/levels/lvl9.py" beforeDir="false" afterPath="$PROJECT_DIR$/levels/lvl9.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/flash.png" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/flash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/lave.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/lave.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/perfecto.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/perfecto.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/redline.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/redline.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/redone.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/redone.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/storm.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/storm.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/white.png" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/white.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/levels_miniatures/windows.png" beforeDir="false" afterPath="$PROJECT_DIR$/levels_miniatures/windows.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="483047204">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="2" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="jpg" value="2" />
-          <entry key="png" value="2" />
-          <entry key="py" value="28" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Image" value="4" />
-          <entry key="Python" value="28" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="py" value="72" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Python" value="72" />
-        </counts>
-      </usages-collector>
-    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="StickmanWar" />
@@ -67,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StickmanWar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="57" />
+            <state relative-caret-position="102">
+              <caret line="519" column="37" selection-start-line="519" selection-start-column="36" selection-end-line="519" selection-end-column="37" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -123,7 +86,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="342" />
     <option name="y" value="101" />
     <option name="width" value="1400" />
@@ -135,7 +98,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -158,6 +120,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -294,13 +257,13 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5016129" side_tool="true" weight="0.18018967" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.4983871" visible="true" weight="0.17916666" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4983871" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="3" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.3271605" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.3261105" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -311,9 +274,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" sideWeight="0.5016129" side_tool="true" weight="0.18018967" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4983871" visible="true" weight="0.17913593" />
+      <window_info id="Structure" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.3261105" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39869988" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../StickmanWar.py" />
@@ -345,13 +324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/levels/lvl2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/levels/lvl4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -377,13 +349,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="99" selection-start-column="99" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/levels/lvl1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
         </state>
       </provider>
     </entry>
@@ -430,10 +395,30 @@
     <entry file="file://$PROJECT_DIR$/levels_miniatures/windows.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/levels_miniatures/flash.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels_miniatures/lave.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/lvl2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/levels/lvl1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/StickmanWar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="57" />
+        <state relative-caret-position="102">
+          <caret line="519" column="37" selection-start-line="519" selection-start-column="36" selection-end-line="519" selection-end-column="37" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
