@@ -80,7 +80,7 @@ def restart_game():
     global running
     running = False
     screen_update()
-    time.sleep(3.5)
+    time.sleep(0.5)
 
 
 class Bonus(pygame.sprite.Sprite):
@@ -587,6 +587,12 @@ while running:
         if obj.restart_time == 500:
             obj.rect.x, obj.rect.y = obj.def_x, obj.def_y
             obj.restart_time = -1
+
+        if fighter1.rect.y >= 1200:
+            b = Fighter2Won(fighter1_won_sprite)
+
+        if fighter2.rect.y >= 1200:
+            b = Fighter1Won(fighter1_won_sprite)
 
     screen_update()
 

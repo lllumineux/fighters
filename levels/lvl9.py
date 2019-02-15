@@ -1,2 +1,62 @@
+from BuildingLevels import Background, StativeTexture, stative_textures_sprites, background_sprites
+
+
 def building():
-    return [], False, []
+    global bonus_mas_pos
+    global narkomany
+    global background
+    bonus_mas_pos = []
+    fighters_mas_pos = []
+    narkomany = True
+    StativeTexture(stative_textures_sprites, (43, 605), (482, 674))
+    StativeTexture(stative_textures_sprites, (550, 614), (610, 644))
+    StativeTexture(stative_textures_sprites, (689, 623), (751, 646))
+    StativeTexture(stative_textures_sprites, (853, 606), (935, 616))
+    StativeTexture(stative_textures_sprites, (792, 664), (821, 666))
+    StativeTexture(stative_textures_sprites, (793, 645), (822, 662))
+    StativeTexture(stative_textures_sprites, (982, 624), (1054, 661))
+    StativeTexture(stative_textures_sprites, (1103, 630), (1154, 658))
+    StativeTexture(stative_textures_sprites, (1223, 619), (1284, 633))
+    StativeTexture(stative_textures_sprites, (1340, 588), (1425, 615))
+    StativeTexture(stative_textures_sprites, (1454, 636), (1525, 676))
+    StativeTexture(stative_textures_sprites, (1566, 597), (1915, 672))
+    StativeTexture(stative_textures_sprites, (589, 793), (693, 855))
+    StativeTexture(stative_textures_sprites, (307, 788), (432, 840))
+    StativeTexture(stative_textures_sprites, (487, 807), (543, 877))
+    StativeTexture(stative_textures_sprites, (171, 802), (211, 842))
+    StativeTexture(stative_textures_sprites, (254, 807), (270, 851))
+    StativeTexture(stative_textures_sprites, (760, 832), (847, 875))
+    StativeTexture(stative_textures_sprites, (909, 840), (991, 893))
+    StativeTexture(stative_textures_sprites, (1060, 858), (1129, 895))
+    StativeTexture(stative_textures_sprites, (1196, 848), (1318, 899))
+    StativeTexture(stative_textures_sprites, (1389, 851), (1439, 905))
+    StativeTexture(stative_textures_sprites, (1490, 861), (1550, 902))
+    StativeTexture(stative_textures_sprites, (1616, 860), (1653, 899))
+    StativeTexture(stative_textures_sprites, (1704, 855), (1729, 889))
+    StativeTexture(stative_textures_sprites, (1824, 841), (1862, 867))
+    bonus_mas_pos.append((1775, 985))
+    bonus_mas_pos.append((1588, 971))
+    bonus_mas_pos.append((1356, 963))
+    bonus_mas_pos.append((1154, 965))
+    bonus_mas_pos.append((1025, 960))
+    bonus_mas_pos.append((871, 956))
+    bonus_mas_pos.append((721, 950))
+    bonus_mas_pos.append((560, 942))
+    bonus_mas_pos.append((446, 931))
+    bonus_mas_pos.append((292, 925))
+    bonus_mas_pos.append((221, 938))
+    StativeTexture(stative_textures_sprites, (128, 615), (248, 531))
+    StativeTexture(stative_textures_sprites, (1710, 603), (1840, 542))
+    fighters_mas_pos.append((175, 435))
+    fighters_mas_pos.append((1774, 453))
+    StativeTexture(stative_textures_sprites, (203, 177), (238, 269))
+    StativeTexture(stative_textures_sprites, (215, 179), (305, 207))
+    StativeTexture(stative_textures_sprites, (215, 265), (298, 247))
+    StativeTexture(stative_textures_sprites, (294, 193), (306, 258))
+    bonus_mas_pos.append((262, 223))
+    StativeTexture(stative_textures_sprites, (1543, 230), (1583, 308))
+    StativeTexture(stative_textures_sprites, (1550, 229), (1647, 255))
+    StativeTexture(stative_textures_sprites, (1558, 286), (1638, 310))
+    StativeTexture(stative_textures_sprites, (1645, 248), (1628, 309))
+    bonus_mas_pos.append((1602, 266))
+    return bonus_mas_pos, narkomany, fighters_mas_pos
